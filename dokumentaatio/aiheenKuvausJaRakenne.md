@@ -13,8 +13,7 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
 - ohjelman käynnistäminen
 - ohjelman suorituksen lopettaminen
 - oman vuoron aloitus
-   * onnistuu jos toinen on lopettanut vuoronsa tai kyse on ensimmäisestä 
-   * vuorosta
+   * onnistuu jos toinen on lopettanut vuoronsa tai kyse on ensimmäisestä  vuorosta
 - oman vuoron lopetus
    * onnistuu missä kohtaa tahansa omaa vuoroa
 - laivojen asettelu koordinaatistoon
@@ -22,6 +21,5 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
 - hyökkäävän laivan valinta
    * oman vuoron aluksi kerran toisesta omasta vuorosta lähtien
 - vihollislaivan sinainnin arvaus klikkaamalla vastustajan koordinaatistoa
-   * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin
-   * valittu
+   * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin  valittu
 
