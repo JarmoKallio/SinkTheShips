@@ -24,7 +24,7 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
    * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin  valittu
 
 
-![Alt text](SinkTheShips/dokumentaatio/luokkakaavio.png)
+![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/luokkakaavio.png)
 
 
 
