@@ -23,3 +23,7 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
 - vihollislaivan sinainnin arvaus klikkaamalla vastustajan koordinaatistoa
    * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin  valittu
 
+
+![Alt text](/luokkakaavio.jpg)
+
+
