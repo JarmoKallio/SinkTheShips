@@ -24,6 +24,6 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
    * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin  valittu
 
 
-![Alt text](/luokkakaavio.jpg)
+![Alt text](/luokkakaavio.png)
 
 
