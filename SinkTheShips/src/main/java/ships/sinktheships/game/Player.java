@@ -17,18 +17,23 @@ public class Player {
     private String name;          //täsä tarkkaa et inputit tulee oikein...että otetaan
     private int turnsPlayed;      //vastaan vain kirjaimia
     private int id;
-    private boolean shipsPlaced;
+    private int shipsInFleet;
 
     public Player(String name, int id) {
         this.name = name;
         this.fleet = new ArrayList();
         this.id = id;
         this.turnsPlayed = 0;
-        this.shipsPlaced = false;
+        this.shipsInFleet = 0;
     }
 
     public void addToFleet(Ship ship) {
-        fleet.add(ship);
+
+        if (this.shipsInFleet < Options.getMaxFleetSize()) {
+            fleet.add(ship);
+            this.shipsInFleet++;
+        }
+
     }
 
     public ArrayList getShips() {
@@ -39,12 +44,12 @@ public class Player {
         return name;
     }
 
-    public void hasPlacedShips() {
-        shipsPlaced = true;
-    }
+    public boolean hasPlacedShips() {
+        if (this.shipsInFleet == Options.getMaxFleetSize()) {
+            return true;
+        }
 
-    public boolean getShipsPlaced() {
-        return shipsPlaced;
+        return false;
     }
 
     public int getId() {

@@ -11,7 +11,8 @@ package ships.sinktheships.game;
  */
 public class Sea {
 
-    //molemmilla pelaajilla yksi, tähän tallennetaan kaikki ammunnat, osumat ja hudit
+    //molemmilla pelaajilla yksi, tähän tallennetaan kaikki ammunnat, osumat ja hudit JA
+    // piirretään tilanne
     public static int ruudukonKoko = 13;
     public int koko;
 

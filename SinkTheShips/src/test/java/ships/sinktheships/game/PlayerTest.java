@@ -71,13 +71,6 @@ public class PlayerTest {
         assertEquals("Cruiser", x.getName());
     }
 
-    @Test
-    public void hasPlacedShipsWorksAndGetShipsPlacedWorks() {
-        boolean tila = player.getShipsPlaced();
-        player.hasPlacedShips();
-        assertEquals(!tila, player.getShipsPlaced());
-    }
-
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

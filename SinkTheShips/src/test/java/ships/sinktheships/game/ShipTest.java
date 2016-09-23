@@ -55,6 +55,27 @@ public class ShipTest {
     }
 
     @Test
+    public void isThisShipHereWorksWhenThereShouldBeShip2() {
+        ship = new Ship("name", 2, 0, 0, 0);
+        assertEquals(true, ship.isThisShipHere(0, 2));
+
+    }
+
+    @Test
+    public void isThisShipHereWorksWhenThereShouldBeShipAngleDiff() {
+        ship = new Ship("name", 4, 0, 0, 90);
+        assertEquals(true, ship.isThisShipHere(3, 0));
+
+    }
+
+    @Test
+    public void isThisShipHereWorksWhenThereShouldBeShipAngleDiffAndNegative() {
+        ship = new Ship("name", 4, 0, 0, 180);
+        assertEquals(true, ship.isThisShipHere(0, -4));
+
+    }
+
+    @Test
     public void fillTableWorksWhenAllSame() {
         int[] table = new int[5];
         table = ship.fillTable(5, 0, false, false);
@@ -72,15 +93,6 @@ public class ShipTest {
 
     }
 
-    @Test
-    public void fillTableWorksWhenCumulativeAndSubractive() {
-        int[] table = new int[5];
-        table = ship.fillTable(5, 0, true, true);
-
-        assertEquals(-4, table[4]);
-
-    }
-    
     @Test
     public void fillTableWorksWhenCumulativeAndSubractive() {
         int[] table = new int[5];

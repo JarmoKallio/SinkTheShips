@@ -27,8 +27,8 @@ public class Ship {
         this.player = player;
         this.destroyed = false;
         this.name = shipName(type);
-        this.type = type;
-        this.size = shipSize(type);
+        this.type = type;     // type on numero 1-5, 1 =sub, jne
+        this.size = shipSize(type - 1); //laivan pituus ruutuina
         this.sternX = sternX;
         this.sternY = sternY;
         this.angle = angleInput;
@@ -62,11 +62,21 @@ public class Ship {
     }
 
     public boolean isThisShipHere(int coordX, int coordY) {
-        if (coverageX[0] <= coordX && coverageX[this.size - 1] >= coordY && coverageY[0] <= coordY
-                && coverageY[this.size - 1] >= coordY) {
+        if (tableHasInteger(coverageX, coordX) && tableHasInteger(coverageY, coordY)) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean tableHasInteger(int[] table, int test) {
+        for (int x : table) {
+            if (x == test) {
+                return true;
+            }
         }
         return false;
+
     }
 
     private void updateDamages() {
@@ -77,34 +87,23 @@ public class Ship {
         for (int i = 0; i < this.damages.length; i++) {
             this.damages[i] = false;  //aluksi aina damaged on false
         }
-        
+
+    }
+
+    public int[] getCoverageX() {
+        return coverageX;
+    }
+
+    public int[] getCoverageY() {
+        return coverageY;
     }
 
     public int[] initializeCoverage(boolean xCoord, int size, int sternPos, int angle) {
         int[] partCoverage;
-
-        if (angle == 0) {
-            if (xCoord) {
-                partCoverage = fillTable(size, sternPos, false, false);
-            } else {
-                partCoverage = fillTable(size, sternPos, true, false);
-            }
-        } else if (angle == 90) {
-            if (xCoord) {
-                partCoverage = fillTable(size, sternPos, true, false);
-            } else {
-                partCoverage = fillTable(size, sternPos, false, false);
-            }
-        } else if (angle == 180) {
-            if (xCoord) {
-                partCoverage = fillTable(size, sternPos, false, false);
-            } else {
-                partCoverage = fillTable(size, sternPos, true, true);
-            }
-        } else if (xCoord) {  //loput vastaa tapausta angle==270
-            partCoverage = fillTable(size, sternPos, true, true);
+        if (xCoord) {
+            partCoverage = fillTable(size, sternPos, angle == 270 || angle == 90, angle == 270);
         } else {
-            partCoverage = fillTable(size, sternPos, false, false);
+            partCoverage = fillTable(size, sternPos, angle == 0 || angle == 180, angle == 180);
         }
 
         return partCoverage;
@@ -123,10 +122,47 @@ public class Ship {
         table[0] = startValue;
         for (int i = 1; i < size; i++) {
             table[i] = table[i - 1] + addedVal;
-
         }
 
         return table;
+    }
+
+    public void newCoordX(int coordX) { //vaihtaa koko laivan x-sijainnin
+        this.sternX = coordX;
+        this.coverageX = initializeCoverage(true, this.size, this.sternX, this.angle);
+
+    }
+
+    public void newCoordY(int coordY) {
+        this.sternY = coordY;
+        this.coverageY = initializeCoverage(false, this.size, this.sternY, this.angle);
+    }
+
+    public void changeAngle() {
+        if (this.angle + 90 < 270) {
+            this.angle = 0;
+        } else {
+            this.angle = this.angle + 90;
+        }
+        this.coverageX = initializeCoverage(true, this.size, this.sternX, this.angle);
+        this.coverageY = initializeCoverage(false, this.size, this.sternY, this.angle);
+
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    void unChangeAngle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getSternX() {
+        return sternX;
+    }
+
+    public int getSternY() {
+        return sternY;
     }
 
 }

@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 9,
+      <title>File: 10,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.Logiikka.java">ships/sinktheships/Logiikka.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Inputs.java">ships/sinktheships/gui/Inputs.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Input.java">ships/sinktheships/gui/Input.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Placer.java">ships/sinktheships/game/Placer.java</a>
                 </td>
                 <td>
                   0
@@ -159,6 +159,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Frame.java">ships/sinktheships/gui/Frame.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Logic.java">ships/sinktheships/logic/Logic.java</a>
                 </td>
                 <td>
                   0

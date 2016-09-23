@@ -7,6 +7,8 @@ package ships.sinktheships.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import ships.sinktheships.game.Ship;
 
 /**
  *
@@ -27,6 +29,18 @@ public class Output implements ActionListener {
     public void clearScreen() {
         //tyhjentää tekstit ruudulta    
 
+    }
+
+    public void drawShipsOnGrid(Ship ship, ArrayList ships) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void drawAdersaryGrid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void drawPlayerGrid() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

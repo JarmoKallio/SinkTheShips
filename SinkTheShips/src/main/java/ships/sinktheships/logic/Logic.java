@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ships.sinktheships;
+package ships.sinktheships.logic;
 
 /**
  *
  * @author jambo
  */
-import ships.sinktheships.gui.Input;
+import ships.sinktheships.gui.Inputs;
 import ships.sinktheships.gui.Output;
 import ships.sinktheships.game.Player;
 
@@ -17,38 +17,43 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.Timer;
+import ships.sinktheships.game.Placer;
+import ships.sinktheships.game.Sea;
+import ships.sinktheships.game.Ship;
 //timer.start();
 
 /**
  *
  * @author jambo
  */
-public class Logiikka {
+public class Logic {
 
-    private Input input;
+    private Inputs input;
     private Output output;
     private ArrayList<Player> players;
     private int nOfPlayers;
 
     //public Timer timer = new Timer(30, this); laitetaan viittaan controlls luokkaan
-    public Logiikka() {
+    public Logic() {
         gameLoopStartScreen();
-        //tässä paranee alustaa esim Input, Output,
-        this.input = new Input();
+        //tässä paranee alustaa esim Inputs, Output,
+        this.input = new Inputs();
         this.output = new Output();
         this.players = new ArrayList();
         this.nOfPlayers = 2;
     }
 
     public static void main(String[] args) {
-        Logiikka ajo = new Logiikka();  //aloittaa ohjelman...
+        //   Logic ajo = new Logic();  //aloittaa ohjelman...
+
+        System.out.println("hellou");
 
     }
 
     private void gameLoopStartScreen() {
         //vaihtoehtoina exit, options -> gameLoopOptions() (yllärii), start new game, jos viimeisin niin 
         //ohjaa gameLoopPlayerName()
-        System.out.println("Hello");
+        System.out.println("Hello hey");
 //        output.clearScreen();
 //        output.printOnScreen("Welcome, my friends! Press q to quit, o for options, enter to start game!");
         //kesken
@@ -101,10 +106,25 @@ public class Logiikka {
         Player x = players.get(playerId);
         //ei valmis
         //tähän le placement of ships, kehotus et enterillä valmis
-        x.hasPlacedShips();
-        input.pressedEnter();
+        int angle = 0;
+        int type = 1;
+
+        while (!x.hasPlacedShips()) {
+            //pitää luoda ruudukko jne
+            //jokaista laivatyyppiä yksi
+
+            output.printOnScreen("Place a ship by pressing enter, move around with arrows,"
+                    + "rotate with r.");
+            //laiva aluksi ruudun keskellä, ei anna laittaa kahta laivaa päällekäin
+            Placer placer = new Placer(x, input, output);
+            Ship ship = new Ship(x.getName(), type, 0, 0, angle);
+            placer.addShip(ship);
+            placer.moveShipAroundUntilEnter();
+            type++;
+        }
+
         output.clearScreen();
-        if (players.get((playerId - 1) * (playerId - 1)).getShipsPlaced()) {
+        if (players.get((playerId - 1) * (playerId - 1)).hasPlacedShips()) {
             //toinenkin asettanut laivat
 
             gameLoopTurn((playerId - 1) * (playerId - 1));
@@ -119,8 +139,11 @@ public class Logiikka {
         int pId = playerId;
         while (true) {
             gameLoopTurnChange(pId);
-            //tähän tulee mitä vuoron aikana tehdään
 
+            output.drawAdersaryGrid();
+            output.drawPlayerGrid();
+
+            //tähän tulee mitä vuoron aikana tehdään
 //            if() { //tarkistus onko toinen voittanut
 //                gameLoopWinnerFound(pId);
 //            }
