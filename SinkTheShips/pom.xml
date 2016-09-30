@@ -37,10 +37,10 @@
     <version>1.1.8</version>
     <configuration>
         <targetClasses>
-            <param>ships.sinktheships.game.*</param>
+            <param>ships.sinktheships.gameobjects.*</param>
         </targetClasses>
         <targetTests>
-            <param>ships.sinktheships.game.*</param>
+            <param>ships.sinktheships.gameobjects.*</param>
         </targetTests>
     </configuration>
 </plugin>
@@ -66,11 +66,17 @@
           <configuration>
               <archive>
                   <manifest>
-                      <mainClass>ships.sinktheships.logic.Logic</mainClass>
+                      <mainClass>ships.sinktheships.logic.GameLoops</mainClass>
                   </manifest>
               </archive>
           </configuration>
       </plugin>
+      
+      <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <version>2.10.3</version>
+</plugin> 
     
     
     </plugins>

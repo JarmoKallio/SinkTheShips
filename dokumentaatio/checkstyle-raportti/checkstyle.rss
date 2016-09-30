@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Ship.java">ships/sinktheships/game/Ship.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Player.java">ships/sinktheships/gameobjects/Player.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Sea.java">ships/sinktheships/game/Sea.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.GameLoops.java">ships/sinktheships/logic/GameLoops.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Options.java">ships/sinktheships/game/Options.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Radar.java">ships/sinktheships/gameobjects/Radar.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Player.java">ships/sinktheships/game/Player.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Sea.java">ships/sinktheships/gameobjects/Sea.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Placer.java">ships/sinktheships/game/Placer.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.ShipPlacer.java">ships/sinktheships/logic/ShipPlacer.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.game.Radar.java">ships/sinktheships/game/Radar.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Options.java">ships/sinktheships/logic/Options.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Ship.java">ships/sinktheships/gameobjects/Ship.java</a>
                 </td>
                 <td>
                   0
@@ -159,20 +173,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Frame.java">ships/sinktheships/gui/Frame.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Logic.java">ships/sinktheships/logic/Logic.java</a>
                 </td>
                 <td>
                   0

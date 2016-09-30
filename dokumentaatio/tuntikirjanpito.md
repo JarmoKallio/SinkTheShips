@@ -6,3 +6,5 @@ Päivä | Tunnit | Kuvaus
 15.09.2016 | 9h | Ohjelmointia, suunnittelua ja testausta
 22.09.2016 | 5h | Ohjelmointia, suunnittelua ja testausta
 23.09.2016 | 6h | Ohjelmointia, testausta, suunnittelua
+29.09.2016 | 7h | Ohjelmointia, refaktorointiurakka, metodien siistimistä
+30.09.2016 | 6h | Ohjelmointia, uudet testit ja javadoc

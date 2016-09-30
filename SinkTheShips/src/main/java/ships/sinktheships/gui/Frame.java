@@ -18,6 +18,13 @@ public class Frame {
 
     private JFrame frame;
 
+    /**
+     *Hallinnoi Swing ikkunoita
+     * 
+     * @param name
+     * @param xsize
+     * @param ysize
+     */
     public Frame(String name, int xsize, int ysize) {
         this.frame = new JFrame(name);
         frame.setSize(xsize, ysize);
