@@ -28,4 +28,4 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
 
 ![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/esimerkkipelivuoro.png)
 
-
+![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/laivan asettelu.png)
