@@ -23,10 +23,10 @@ public class Player {
     private int shipsInFleet;
 
     /**
+     * Luo pelaaja-olion.
      *
-     *
-     * @param name
-     * @param id
+     * @param name Pelaajan itse valitsema nimi
+     * @param id numero jolla pelaaja tunnistetaan. 0 tai 1
      */
     public Player(String name, int id) {
         this.name = name;
@@ -39,7 +39,7 @@ public class Player {
     /**
      * Lisää laivan pelaajan laivasto-ArrayListiin.
      *
-     * @param ship
+     * @param ship Laiva talletetaan pelaajan listaan
      */
     public void addToFleet(Ship ship) {
 
@@ -51,26 +51,23 @@ public class Player {
     }
 
     /**
+     * Paluuarvona pelaajan laivat sisältävä lista.
      *
-     * @return
+     * @return palauttaa pelaajan laivat ArrayListissä
      */
     public ArrayList getShips() {
         return fleet;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getName() {
         return name;
     }
 
     /**
-     * Tarkistaa onko pelaaja jo asettanut kaikki laivansa ns pelilaudalle eli
-     * koordinaatistoon.
+     * Onko pelaaja asettanut laivansa. Tarkistaa onko pelaaja jo asettanut
+     * kaikki laivansa ns pelilaudalle eli koordinaatistoon.
      *
-     * @return
+     * @return kyllä tai ei riippuu onko laivat asetettu
      */
     public boolean hasPlacedShips() {
         if (this.shipsInFleet == Options.getMaxFleetSize()) {
@@ -81,8 +78,9 @@ public class Player {
     }
 
     /**
+     * Pelaajan idn palautus.
      *
-     * @return
+     * @return pelaajan id
      */
     public int getId() {
         return id;

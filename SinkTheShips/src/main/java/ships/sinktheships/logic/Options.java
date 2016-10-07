@@ -6,7 +6,7 @@
 package ships.sinktheships.logic;
 
 /**
- * Luokkaan tallennetaan pelin asetuksia. Muiden luokkien oliot voivat käydä
+ * Luokkaan tallennetaan pelin asetuksia, muiden luokkien oliot voivat käydä
  * hakemassa näitä tietoja.
  *
  * @author jambo
@@ -14,21 +14,28 @@ package ships.sinktheships.logic;
 public class Options {
 
     private static int maxFleetSize = 5;
-    private static int xMin = 0;
+    private static int xMin = 0; // laivaruudukon min arvo..
     private static int xMax = 10;
     private static int yMin = 0;
     private static int yMax = 10;
 
-    /**
-     *
-     * @return
-     */
+    private static int windowSizeX = 660;
+    private static int windowSizeY = 660;
+
     public static int getMaxFleetSize() {
         return maxFleetSize;
     }
 
     static int getXmin() {
         return xMin;
+    }
+
+    public static int getWindowSizeX() {
+        return windowSizeX;
+    }
+
+    public static int getWindowSizeY() {
+        return windowSizeY;
     }
 
     static int getXmax() {

@@ -31,7 +31,7 @@ public class ShipPlacer {
     }
 
     /**
-     * Metodi muuttaa laivan koordinaattitietoja eli siirtää sitä
+     * Metodi muuttaa laivan koordinaattitietoja eli siirtää sitä.
      *
      * @param amount liikutettava määrä negatiivinen tai positiivinen
      * @param moveAlongXaxis true liikuttaa x ja false y akselia pitkin
@@ -46,10 +46,10 @@ public class ShipPlacer {
 
     /**
      * Tarkistusmetodi jolla nähdään että laiva ei mene vanhojen laivojen päälle
-     * tai koordinaatiston ulkopuolelle
+     * tai koordinaatiston ulkopuolelle.
      *
-     * @param player
-     * @return
+     * @param player pelaaja jonka laivastoon verrataan
+     * @return boolean arvo, sopiiko laiva muiden laivojen sekaan ja ruudukolle
      */
     public boolean shipFitsInWithPlayersOtherShipsAndGrid(Player player) {
         if (shipIsInRange() && shipDoesNotCollideWithPlayersOtherShips(player)) {
@@ -59,8 +59,9 @@ public class ShipPlacer {
     }
 
     /**
+     * Kertoo onko laiva peliruudukon sisällä.
      *
-     * @return
+     * @return boolean kyllä tai ei
      */
     public boolean shipIsInRange() {
         if (isCoverageInRange(rangeYmin, rangeYmax, this.ship.getCoverageY())) {
@@ -103,9 +104,9 @@ public class ShipPlacer {
     }
 
     /**
-     * Palauttaa ShipPlacerissä parhaillaan olevan laivan
+     * Palauttaa ShipPlacerissä parhaillaan olevan laivan.
      *
-     * @return
+     * @return paluuarvona laiva
      */
     public Ship getShip() {
         return ship;

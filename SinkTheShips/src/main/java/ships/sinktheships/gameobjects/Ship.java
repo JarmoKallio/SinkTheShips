@@ -26,8 +26,9 @@ public class Ship {
     private int[] coverageY;
 
     /**
+     * Luo laiva-olion.
      *
-     * @param typeId
+     * @param typeId laivan tyyppi, voi olla numero välillä 1-5
      * @param sternXcoordinate laivan perään x koordinaatti
      * @param sternYcoordinate perän y koordinaatti
      * @param shipAngle mihin laivan nokka osoittaa perästä katsottuna
@@ -73,8 +74,8 @@ public class Ship {
     /**
      * Tarkistaa onko osa laivaa annetussa sijainnissa.
      *
-     * @param coordX
-     * @param coordY
+     * @param coordX tarkistettavan pisteen x-sijainti
+     * @param coordY vastaavasti pisteen y-sijainti
      * @return boolean löytyikö laivaa vai ei
      */
     public boolean isThisShipHere(int coordX, int coordY) {
@@ -86,18 +87,19 @@ public class Ship {
     }
 
     private boolean tableHasInteger(int[] table, int testedValue) {
-        for (int x : table) {
-            if (x == testedValue) {
-                return true;
+        if (table.length != 0) {
+            for (int x : table) {
+                if (x == testedValue) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    private void updateDamages() {
-
-    }
-
+//    private void updateDamages() {
+//
+//    }
     private void initializeDamages() {
         for (int i = 0; i < this.damages.length; i++) {
             this.damages[i] = false;  //aluksi aina damaged on false
@@ -112,7 +114,7 @@ public class Ship {
         return coverageY;
     }
 
-    public int[] initializeCoverage(boolean xCoord, int size, int sternPos, int angle) {
+    private int[] initializeCoverage(boolean xCoord, int size, int sternPos, int angle) {
         int[] partCoverage;
         if (xCoord) {
             partCoverage = fillTable(size, sternPos, angle == 270 || angle == 90, angle == 270);
@@ -123,7 +125,7 @@ public class Ship {
         return partCoverage;
     }
 
-    public int[] fillTable(int size, int startValue, boolean cumulativ, boolean subtract) {
+    private int[] fillTable(int size, int startValue, boolean cumulativ, boolean subtract) {
         //helper of the initializeCoverage method
         int[] table = new int[size];
         int addedVal = 0;
@@ -141,8 +143,9 @@ public class Ship {
     }
 
     /**
+     * Vaihtaa laivan perän x-koordinaatin.
      *
-     * @param x
+     * @param x laivan perän uusi x-koordinaatti
      */
     public void newSternXcoordinate(int x) { //vaihtaa koko laivan x-sijainnin
         this.sternXcoordinate = x;
@@ -151,8 +154,9 @@ public class Ship {
     }
 
     /**
+     * Vaihtaa laivan perän y-koordinaatin.
      *
-     * @param y
+     * @param y laivan perän uusi y-koordinaatti
      */
     public void newSternYcoordinate(int y) {
         this.sternYcoordinate = y;
@@ -160,7 +164,11 @@ public class Ship {
     }
 
     /**
-     *
+     * Muuttaa laivan kulmaa. Oletusarvo on uudella laivalla niin, että perä eli
+     * stern on alhaalla ja nokka osoittaa ylöspäin. Laiva on siis y-akselin
+     * suuntainen. Metodi muuttaa kulmaa plussaamalla nykyiseen kulmaan 90
+     * astetta JA alustaa laivan sijainnin uudestaan. Sekä x- että y-sijainnit
+     * tai coveeraget niinkuin tässä on ny käytetty.
      */
     public void changeShipAngle() {
         this.shipAngle = this.shipAngle + 90;

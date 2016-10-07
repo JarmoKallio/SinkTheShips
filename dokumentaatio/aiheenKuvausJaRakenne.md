@@ -20,12 +20,12 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
    * ensimmäisellä omalla vuorolla
 - hyökkäävän laivan valinta
    * oman vuoron aluksi kerran toisesta omasta vuorosta lähtien
-- vihollislaivan sijainnin arvaus klikkaamalla vastustajan koordinaatistoa
-   * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin  valittu
+- vihollislaivan sijainnin arvaus antamalla piste vastustajan koordinaatistoa
+   * toisesta omasta vuorosta eteenpäin. Hyökkäävä laiva pitää olla ensin valittu
 
 
 ![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/luokkakaavio.png)
 
-
+![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/esimerkkipelivuoro.png)
 
 

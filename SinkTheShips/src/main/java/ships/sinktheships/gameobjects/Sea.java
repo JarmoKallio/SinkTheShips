@@ -18,6 +18,9 @@ public class Sea {
     public static int ruudukonKoko = 13;
     public int koko;
 
+    /**
+     * Vielä vähän riippuu käytetäänkö tätä.
+     */
     public Sea() {
         this.koko = ruudukonKoko;
     }

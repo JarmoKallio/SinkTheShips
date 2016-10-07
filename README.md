@@ -6,7 +6,7 @@ Sink The Ships on pieni kahden pelaajan laivanupotuspeli, jota pelataan vuorotel
 
 [aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
-[Pit-raportti](https://htmlpreview.github.io/?https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/pit-raportti/201609302208/index.html)
+[Pit-raportti](https://htmlpreview.github.io/?https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/pit-raportti/201610072105/index.html)
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
 
 

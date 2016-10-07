@@ -73,32 +73,32 @@ public class ShipTest {
 
     }
 
-    @Test
-    public void fillTableWorksWhenAllSame() {
-        int[] table = new int[5];
-        table = ship.fillTable(5, 0, false, false);
-
-        assertEquals(0, table[4]);
-
-    }
-
-    @Test
-    public void fillTableWorksWhenCumulative() {
-        int[] table = new int[5];
-        table = ship.fillTable(5, 0, true, false);
-
-        assertEquals(4, table[4]);
-
-    }
-
-    @Test
-    public void fillTableWorksWhenCumulativeAndSubractive() {
-        int[] table = new int[5];
-        table = ship.fillTable(5, 0, true, true);
-
-        assertEquals(-4, table[4]);
-
-    }
+//    @Test
+//    public void fillTableWorksWhenAllSame() {
+//        int[] table = new int[5];
+//        table = ship.fillTable(5, 0, false, false);
+//
+//        assertEquals(0, table[4]);
+//
+//    }
+//
+//    @Test
+//    public void fillTableWorksWhenCumulative() {
+//        int[] table = new int[5];
+//        table = ship.fillTable(5, 0, true, false);
+//
+//        assertEquals(4, table[4]);
+//
+//    }
+//
+//    @Test
+//    public void fillTableWorksWhenCumulativeAndSubractive() {
+//        int[] table = new int[5];
+//        table = ship.fillTable(5, 0, true, true);
+//
+//        assertEquals(-4, table[4]);
+//
+//    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

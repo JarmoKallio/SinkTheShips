@@ -9,98 +9,193 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- *Luokkaa käytetään näppäimistön kuunteluun, siinä toteutetaan käyttäjän syötteiden
- * käsittely niin, ettei muiden luokkien tarvitse implementoida näitä juttuja
+ * Luokkaa käytetään näppäimistön kuunteluun, siinä toteutetaan käyttäjän
+ * syötteiden käsittely niin, ettei muiden luokkien tarvitse implementoida näitä
+ * juttuja.
+ *
  * @author jambo
  */
 public class Inputs implements KeyListener {
 
-    /**
-     *
-     * @return
-     */
-    public String type() { //pelaaja voi kirjoittaa tekstiä, odottaa kunnes painetaan enter
-        return "string";
-    }
+    private char recentlyTypedKey = '_';
+    private boolean pressedEnter = false;
+    private boolean pressedBackSpace = false;
+    private boolean pressedQ = false;
+    private boolean pressedO = false;
+    private boolean pressedR = false;
+    private boolean pressedDown = false;
+    private boolean pressedUp = false;
+    private boolean pressedLeft = false;
+    private boolean pressedRight = false;
+    private boolean somethingTypedAndNotUsed = false;
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Palauttaa juuri painetun näppäimen char-arvon.
+     *
+     * @return näppäity arvo
+     */
+    public char getPressedKey() {
+        somethingTypedAndNotUsed = false;
+        char returnValue = recentlyTypedKey;
+        zeroKeyValues();
+        return returnValue;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int keyCode = e.getKeyCode();
+        if (keyCode == KeyEvent.VK_ENTER) {
+            zeroKeyValues();
+            pressedEnter = true;
+        }
+        if (keyCode == KeyEvent.VK_BACK_SPACE) {
+            zeroKeyValues();
+            pressedBackSpace = true;
+        }
+        if (keyCode == KeyEvent.VK_Q) {
+            zeroKeyValues();
+            pressedQ = true;
+        }
+
+        if (keyCode == KeyEvent.VK_O) {
+            zeroKeyValues();
+            pressedO = true;
+        }
+        if (keyCode == KeyEvent.VK_R) {
+            zeroKeyValues();
+            pressedR = true;
+        }
+
+        if (keyCode == KeyEvent.VK_DOWN) {
+            zeroKeyValues();
+            pressedDown = true;
+        }
+
+        if (keyCode == KeyEvent.VK_UP) {
+            zeroKeyValues();
+            pressedUp = true;
+        }
+
+        if (keyCode == KeyEvent.VK_LEFT) {
+            zeroKeyValues();
+            pressedLeft = true;
+        }
+
+        if (keyCode == KeyEvent.VK_RIGHT) {
+            zeroKeyValues();
+            pressedRight = true;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+        char newTypedKey = e.getKeyChar();
+        //tarkastetaan et vaan numeroita tai kirjaimia
+        String accepted = " 1234567890qwertyuiopåasdfghjklöäzxcvbnmQWERTYUIOPÅASDFGHJKLÖÄZXCVBNMüÜ";
+        if (accepted.contains(newTypedKey + "")) {
+            this.recentlyTypedKey = newTypedKey;
+            somethingTypedAndNotUsed = true;
+        }
     }
 
     /**
+     * Saadaan tieto, odottaako jokin hyväksyttävä näppäinmenpainallus käyttöä.
      *
+     * @return boolean arvo
      */
-    public void pressedEnter() {
-        //odottaa kunnes enter painettu sitten metodin suoritus lakkaa
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isSomethingTypedAndNotUsed() {
+        return somethingTypedAndNotUsed;
     }
 
-    /**
-     *
-     * @return
-     */
-    public int numberTyped() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedBackSpace() {
+        if (pressedBackSpace) {
+            zeroKeyValues();
+            return !pressedBackSpace;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean keyHasBeenPressedUp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedDown() {
+        if (pressedDown) {
+            zeroKeyValues();
+            return !pressedDown;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean keyHasBeenPressedDown() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedEnter() {
+        if (pressedEnter) {
+            zeroKeyValues();
+            return !pressedEnter;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean keyHasBeenPressedLeft() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedLeft() {
+        if (pressedLeft) {
+            zeroKeyValues();
+            return !pressedLeft;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean keyHasBeenPressedRight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedO() {
+        if (pressedO) {
+            zeroKeyValues();
+            return !pressedO;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean enterHasBeenPressed() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedQ() {
+        if (pressedQ) {
+            zeroKeyValues();
+            return !pressedQ;
+        }
+        return false;
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean keyHasBeenPressedR() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isPressedR() {
+        if (pressedR) {
+            zeroKeyValues();
+            return !pressedR;
+        }
+        return false;
     }
 
+    public boolean isPressedRight() {
+        if (pressedRight) {
+            zeroKeyValues();
+            return !pressedRight;
+        }
+        return false;
+    }
+
+    public boolean isPressedUp() {
+        if (pressedUp) {
+            zeroKeyValues();
+            return !pressedUp;
+        }
+        return false;
+    }
+
+    private void zeroKeyValues() {
+        pressedEnter = false;
+        pressedBackSpace = false;
+        pressedQ = false;
+        pressedO = false;
+        pressedR = false;
+        pressedDown = false;
+        pressedUp = false;
+        pressedLeft = false;
+        pressedRight = false;
+        recentlyTypedKey = '_';
+        somethingTypedAndNotUsed = false;
+    }
 }

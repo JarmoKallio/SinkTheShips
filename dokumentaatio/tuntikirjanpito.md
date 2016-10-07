@@ -8,3 +8,5 @@ Päivä | Tunnit | Kuvaus
 23.09.2016 | 6h | Ohjelmointia, testausta, suunnittelua
 29.09.2016 | 7h | Ohjelmointia, refaktorointiurakka, metodien siistimistä
 30.09.2016 | 6h | Ohjelmointia, uudet testit ja javadoc
+29.09.2016 | 8h | käyttöliittymän kanssa säätämistä
+30.09.2016 | 14h | enimmäkseen käyttöliittymää tänäänkin, sain kylläkin etenemään
