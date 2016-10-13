@@ -14,13 +14,13 @@ package ships.sinktheships.gameobjects;
  */
 public class Ship {
 
-    private String shipType;
+    private String shipTypeName;
     private int shipTypeId;
     private int size;
     private int sternXcoordinate;    //laivan perän sijainti
     private int sternYcoordinate;
     private int shipAngle;         //angle:   0      perä keskellä ja laiva "viisarina"
-    private boolean[] damages; //     270   90
+    private int damages; //     270   90
     private boolean destroyed; //        180
     private int[] coverageX;
     private int[] coverageY;
@@ -36,14 +36,14 @@ public class Ship {
     public Ship(int typeId, int sternXcoordinate, int sternYcoordinate, int shipAngle) {
 
         this.destroyed = false;
-        this.shipType = shipName(typeId);
+        this.shipTypeName = shipName(typeId - 1);
         this.shipTypeId = typeId;     // shipTypeId on numero 1-5, 1=sub, jne
         this.size = shipSizeTable(typeId - 1); //laivan pituus ruutuina typeId pienimmillään1 joten vähennys koska metodi hakee tablesta
         this.sternXcoordinate = sternXcoordinate;
         this.sternYcoordinate = sternYcoordinate;
         this.shipAngle = shipAngle;
-        this.damages = new boolean[this.size];
-        initializeDamages();
+        this.damages = 0;
+
         this.coverageX = initializeCoverage(true, this.size, this.sternXcoordinate, this.shipAngle);
         this.coverageY = initializeCoverage(false, this.size, this.sternYcoordinate, this.shipAngle);
 
@@ -59,12 +59,8 @@ public class Ship {
         return sizes[index];
     }
 
-    public boolean[] getDamages() {
-        return damages;
-    }
-
     public String getName() {
-        return shipType;
+        return shipTypeName;
     }
 
     public int getSize() {
@@ -86,6 +82,10 @@ public class Ship {
         }
     }
 
+    public boolean isThisShipHere(Coordinate coordinate) {
+        return isThisShipHere(coordinate.getxCoordinate(), coordinate.getyCoordinate());
+    }
+
     private boolean tableHasInteger(int[] table, int testedValue) {
         if (table.length != 0) {
             for (int x : table) {
@@ -97,13 +97,19 @@ public class Ship {
         return false;
     }
 
-//    private void updateDamages() {
-//
-//    }
-    private void initializeDamages() {
-        for (int i = 0; i < this.damages.length; i++) {
-            this.damages[i] = false;  //aluksi aina damaged on false
+    public void setDamages(int damages) {
+        this.damages = damages;
+        if (this.damages >= this.size) {
+            this.destroyed = true;
         }
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
+    public int getDamages() {
+        return damages;
     }
 
     public int[] getCoverageX() {
@@ -172,6 +178,9 @@ public class Ship {
      */
     public void changeShipAngle() {
         this.shipAngle = this.shipAngle + 90;
+        if (this.shipAngle == 360) {
+            this.shipAngle = 0;
+        }
 
         this.coverageX = initializeCoverage(true, this.size, this.sternXcoordinate, this.shipAngle);
         this.coverageY = initializeCoverage(false, this.size, this.sternYcoordinate, this.shipAngle);

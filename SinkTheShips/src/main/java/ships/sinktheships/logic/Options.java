@@ -14,20 +14,16 @@ package ships.sinktheships.logic;
 public class Options {
 
     private static int maxFleetSize = 5;
-    private static int xMin = 0; // laivaruudukon min arvo..
+    private static int xMin = 1; // laivaruudukon min arvo..
     private static int xMax = 10;
-    private static int yMin = 0;
+    private static int yMin = 1;
     private static int yMax = 10;
 
-    private static int windowSizeX = 660;
-    private static int windowSizeY = 660;
+    private static int windowSizeX = 720;
+    private static int windowSizeY = 720;
 
     public static int getMaxFleetSize() {
         return maxFleetSize;
-    }
-
-    static int getXmin() {
-        return xMin;
     }
 
     public static int getWindowSizeX() {
@@ -36,6 +32,10 @@ public class Options {
 
     public static int getWindowSizeY() {
         return windowSizeY;
+    }
+
+    static int getXmin() {
+        return xMin;
     }
 
     static int getXmax() {

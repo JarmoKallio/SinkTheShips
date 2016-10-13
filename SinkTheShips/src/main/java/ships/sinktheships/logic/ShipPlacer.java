@@ -64,18 +64,19 @@ public class ShipPlacer {
      * @return boolean kyllä tai ei
      */
     public boolean shipIsInRange() {
-        if (isCoverageInRange(rangeYmin, rangeYmax, this.ship.getCoverageY())) {
-            if (isCoverageInRange(rangeXmin, rangeXmax, this.ship.getCoverageX())) {
-                return true;
-            }
+       
+        if (!checkRange(this.ship.getCoverageX(),"X")) {
+            return false;
+        } else if (!checkRange(this.ship.getCoverageY(),"Y")) {
+            return false;
         }
-        return false;
-
+        return true;
     }
 
-    private boolean isCoverageInRange(int rangeMin, int rangeMax, int[] coverage) {
-        for (int x : coverage) {
-            if (x > rangeMax || x < rangeMin) {
+    private boolean checkRange(int[] coverage, String q) {
+        for (int i : coverage) {
+            System.out.println(q+i);
+            if (i < 1 || i > 10) {  //toistaiseksi ruudukko on neliö
                 return false;
             }
         }

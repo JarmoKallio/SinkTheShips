@@ -42,7 +42,7 @@ public class ShipTest {
 
     @Test
     public void shipNameWorks() {
-        assertEquals(ship.getName(), "Destroyer");
+        assertEquals(ship.getName(), "Submarine");
 
     }
 

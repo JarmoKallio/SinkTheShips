@@ -64,11 +64,11 @@ public class PlayerTest {
 
     @Test
     public void addToFleetWorksAndGetShipsWorks() {
-        Ship destroyerr = new Ship(2, 0, 0, 0); //pitäis olla Cruiser
+        Ship destroyerr = new Ship(2, 0, 0, 0); //pitäis olla Destroyer
         player.addToFleet(destroyerr);
         List<Ship> testi = player.getShips();
         Ship x = testi.get(0);
-        assertEquals("Cruiser", x.getName());
+        assertEquals("Destroyer", x.getName());
     }
 
     // TODO add test methods here.

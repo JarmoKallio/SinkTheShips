@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class Player {
 
     private ArrayList<Ship> fleet;   //tänne säilötään pelaajan laivat
+    private ArrayList<Shot> shotsOnThisOnesGrid;
     private String name;          //täsä tarkkaa et inputit tulee oikein...että otetaan
     private int turnsPlayed;      //vastaan vain kirjaimia
     private int id;
@@ -31,6 +32,7 @@ public class Player {
     public Player(String name, int id) {
         this.name = name;
         this.fleet = new ArrayList<Ship>();
+        this.shotsOnThisOnesGrid = new ArrayList<Shot>();
         this.id = id;
         this.turnsPlayed = 0;
         this.shipsInFleet = 0;
@@ -50,12 +52,16 @@ public class Player {
 
     }
 
+    public ArrayList<Shot> getShotsOnThisOnesGrid() {
+        return shotsOnThisOnesGrid;
+    }
+
     /**
      * Paluuarvona pelaajan laivat sisältävä lista.
      *
      * @return palauttaa pelaajan laivat ArrayListissä
      */
-    public ArrayList getShips() {
+    public ArrayList<Ship> getShips() {
         return fleet;
     }
 
@@ -86,4 +92,51 @@ public class Player {
         return id;
     }
 
+    private int numOfShipsDestroyed() {
+        int number = 0;
+
+        for (Ship x : fleet) {
+            if (x.isDestroyed()) {
+                number++;
+            }
+        }
+
+        return number;
+    }
+
+    public boolean allShipsDestroyed() {
+        if (numOfShipsDestroyed() >= this.shipsInFleet) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addShot(Coordinate coordinate) {
+
+        if (this.hasShipInThisCoordinate(coordinate)) {
+            if (this.shotsOnThisOnesGrid.contains(new Shot(coordinate, true))) {
+                return false;
+            }
+            this.shotsOnThisOnesGrid.add(new Shot(coordinate, true));
+
+        } else {
+            if (this.shotsOnThisOnesGrid.contains(new Shot(coordinate, false))) {
+                return false;
+            }
+            this.shotsOnThisOnesGrid.add(new Shot(coordinate, false));
+        }
+
+        return true;
+    }
+
+    public boolean hasShipInThisCoordinate(Coordinate coordinate) {
+        for (Ship x : this.fleet) {
+            if (x.isThisShipHere(coordinate)) {
+                int dam = x.getDamages();
+                x.setDamages(dam + 1);
+                return true;
+            }
+        }
+        return false;
+    }
 }

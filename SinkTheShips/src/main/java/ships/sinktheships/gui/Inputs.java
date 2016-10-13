@@ -7,6 +7,8 @@ package ships.sinktheships.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import ships.sinktheships.gameobjects.Coordinate;
+import ships.sinktheships.gameobjects.Player;
 
 /**
  * Luokkaa käytetään näppäimistön kuunteluun, siinä toteutetaan käyttäjän
@@ -28,6 +30,9 @@ public class Inputs implements KeyListener {
     private boolean pressedLeft = false;
     private boolean pressedRight = false;
     private boolean somethingTypedAndNotUsed = false;
+    private boolean recordXcoordinate = true;
+
+    private boolean somethingHasBeenTyped = false;
 
     /**
      * Palauttaa juuri painetun näppäimen char-arvon.
@@ -41,8 +46,14 @@ public class Inputs implements KeyListener {
         return returnValue;
     }
 
+    public boolean somethingHasBeenTyped() { //käytetään loopeissa odottamisen apuna
+        somethingHasBeenTyped = false;
+        return true;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
+        somethingHasBeenTyped = true;
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_ENTER) {
             zeroKeyValues();
@@ -98,9 +109,11 @@ public class Inputs implements KeyListener {
         char newTypedKey = e.getKeyChar();
         //tarkastetaan et vaan numeroita tai kirjaimia
         String accepted = " 1234567890qwertyuiopåasdfghjklöäzxcvbnmQWERTYUIOPÅASDFGHJKLÖÄZXCVBNMüÜ";
+        somethingHasBeenTyped = true;
         if (accepted.contains(newTypedKey + "")) {
             this.recentlyTypedKey = newTypedKey;
             somethingTypedAndNotUsed = true;
+
         }
     }
 
@@ -198,4 +211,103 @@ public class Inputs implements KeyListener {
         recentlyTypedKey = '_';
         somethingTypedAndNotUsed = false;
     }
+
+    public String userInputString(DrawOnScreen drawOnScreen, String message) throws InterruptedException {
+        String string = "_";
+        while (true) {
+            drawOnScreen.newLineOfText(message, 1);
+            drawOnScreen.addLineOfText(string, 3);
+            if (this.isPressedEnter()) {
+                break;
+            } else if (this.isPressedBackSpace()) {
+                string = shortenString(string);
+                continue;
+            } else if (this.isSomethingTypedAndNotUsed()) {
+                char potentialValue = this.getPressedKey();
+                if (potentialValue != '_') {
+                    if (string.length() < 15) {
+                        string += potentialValue;
+                    }
+                }
+            }
+            Thread.sleep(70);
+        }
+        return string;
+    }
+
+    public Coordinate userInputCoordinate(DrawOnScreen drawOnScreen, Player currentPlayer, Player adversary) throws InterruptedException {
+        Coordinate coord = new Coordinate(0, 0);
+        int number = 0;
+        String stringX = "" + 0;
+        String stringY = "" + 0;
+        String current = "";
+        while (true) {
+
+            drawOnScreen.drawBattle(currentPlayer, adversary);
+            if (recordXcoordinate) {
+                drawOnScreen.addLineOfText("X: < " + stringX + " >  Y:  " + stringY + "  ", 4);
+            } else {
+                drawOnScreen.addLineOfText("X:   " + stringX + "    Y: <" + stringY + " >", 4);
+            }
+
+            if (this.isPressedEnter()) {
+
+                coord = new Coordinate(Integer.parseInt(shortenLongString(stringX)), Integer.parseInt(shortenLongString(stringY)));
+                break;
+
+            } else if (this.isPressedLeft()) {
+                recordXcoordinate = true;
+            } else if (this.isPressedRight()) {
+                recordXcoordinate = false;
+            }
+            if (this.isPressedBackSpace()) {
+                if (recordXcoordinate) {
+                    stringX = shortenString(stringX);
+                } else {
+                    stringY = shortenString(stringY);
+                }
+            } else if (this.isSomethingTypedAndNotUsed()) {
+                int potentialValue = this.getPressedKeyIfNumber();
+                if (recordXcoordinate) {
+                    stringX = stringX + potentialValue;
+                } else {
+                    stringY = stringY + potentialValue;
+                }
+            }
+
+            Thread.sleep(70);
+
+        }
+        return coord;
+    }
+
+    private String shortenLongString(String string) {
+        if (string.length() >= 4) {
+            string = string.substring(0, 3);
+        }
+        return string;
+    }
+
+    private String shortenString(String string) {
+        if (string.length() == 1) {
+            return "";
+        } else if (string.length() > 1) {
+            return string.substring(0, string.length() - 1);
+        }
+        return "";  //jos pituus esim nolla
+    }
+
+    private int getPressedKeyIfNumber() {
+        somethingTypedAndNotUsed = false;
+        char returnValue = getPressedKey();
+        String accepted = "1234567890";
+
+        if (accepted.contains(returnValue + "")) {
+            zeroKeyValues();
+            return Integer.parseInt(returnValue + "");
+        }
+
+        return 0;
+    }
+
 }
