@@ -31,8 +31,7 @@ public class GameLoops {
     private Frame window;
     private DrawOnScreen drawOnScreen;
 
-   // private Timer timer = new Timer(20, this);
-
+    // private Timer timer = new Timer(20, this);
     //public Timer timer = new Timer(30, this); laitetaan viittaan controlls luokkaan
     /**
      * Konstruktori.
@@ -248,7 +247,6 @@ public class GameLoops {
             } else {
                 break;
             }
-
         }
         drawOnScreen.drawBattle(currentPlayer, adversary);
 

@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 12,
-             Errors: 12,
+      <title>File: 15,
+             Errors: 42,
              Warnings: 0,
              Infos: 0
       </title>
@@ -47,6 +47,48 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Player.java">ships/sinktheships/gameobjects/Player.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Radar.java">ships/sinktheships/gameobjects/Radar.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Shot.java">ships/sinktheships/gameobjects/Shot.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Frame.java">ships/sinktheships/gui/Frame.java</a>
                 </td>
                 <td>
                   0
@@ -83,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  13
                 </td>
               </tr>
                           <tr>
@@ -97,21 +139,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Radar.java">ships/sinktheships/gameobjects/Radar.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  2
                 </td>
               </tr>
                           <tr>
@@ -144,6 +172,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.GameStates.java">ships/sinktheships/logic/GameStates.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.ShipPlacer.java">ships/sinktheships/logic/ShipPlacer.java</a>
                 </td>
                 <td>
@@ -153,7 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  4
                 </td>
               </tr>
                           <tr>
@@ -167,7 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  7
                 </td>
               </tr>
                           <tr>
@@ -195,12 +237,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  3
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Frame.java">ships/sinktheships/gui/Frame.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Coordinate.java">ships/sinktheships/gameobjects/Coordinate.java</a>
                 </td>
                 <td>
                   0
@@ -209,7 +251,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  6
                 </td>
               </tr>
                       </tbody>

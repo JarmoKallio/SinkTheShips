@@ -29,3 +29,8 @@ Pelaaja voi kerrallaan arvata niin monta kertaa sijaintia, voidaan myös sanoa *
 ![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/esimerkkipelivuoro.png)
 
 ![Alt text](https://github.com/JarmoKallio/SinkTheShips/blob/master/dokumentaatio/laivan asettelu.png)
+
+
+**Ohjelman rakenne:** Ohjelma koostuu muutamasta yksinkertaisesta luokasta, kuten laiva-olioita luovasta Ship-ja pelaaja-olioita luovasta Player-luokasta. Ohjelman etenemisen määrittää GameLoops -luokka, jossa määritellään ohjelman tilat, eli mitä milloinkin voi tapahtua. Ohjelmassa on myös luokka ruudulle piirtämiseen ja komentojen antamisen käsittelyyn.
+
+huom: ohjelman rakenne muuttuu vielä hieman, joten tämä kuvaus on alustavalla tasolla
