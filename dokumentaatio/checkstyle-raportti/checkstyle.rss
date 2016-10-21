@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 15,
-             Errors: 42,
+      <title>File: 24,
+             Errors: 5,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Screen.java">ships/sinktheships/logic/Screen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -83,12 +97,82 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.SelectShipScreen.java">ships/sinktheships/logic/SelectShipScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.ShipPlacementScreen.java">ships/sinktheships/logic/ShipPlacementScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Frame.java">ships/sinktheships/gui/Frame.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.Outputs.java">ships/sinktheships/gui/Outputs.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Scheduler.java">ships/sinktheships/logic/Scheduler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.PlayerChangeScreen.java">ships/sinktheships/logic/PlayerChangeScreen.java</a>
                 </td>
                 <td>
                   0
@@ -125,12 +209,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.GameLoops.java">ships/sinktheships/logic/GameLoops.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Initialize.java">ships/sinktheships/logic/Initialize.java</a>
                 </td>
                 <td>
                   0
@@ -139,12 +223,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gameobjects.Sea.java">ships/sinktheships/gameobjects/Sea.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.StartScreen.java">ships/sinktheships/logic/StartScreen.java</a>
                 </td>
                 <td>
                   0
@@ -167,21 +251,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.GameStates.java">ships/sinktheships/logic/GameStates.java</a>
-                </td>
-                <td>
                   0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
                 </td>
               </tr>
                           <tr>
@@ -195,12 +265,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  0
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ships.sinktheships.gui.DrawOnScreen.java">ships/sinktheships/gui/DrawOnScreen.java</a>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.PlayerNameScreen.java">ships/sinktheships/logic/PlayerNameScreen.java</a>
                 </td>
                 <td>
                   0
@@ -209,7 +279,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.DrawCommand.java">ships/sinktheships/logic/DrawCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.VictoryScreen.java">ships/sinktheships/logic/VictoryScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -237,7 +335,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.AttackScreen.java">ships/sinktheships/logic/AttackScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ships.sinktheships.logic.Logic.java">ships/sinktheships/logic/Logic.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                           <tr>
@@ -251,7 +377,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  6
+                  0
                 </td>
               </tr>
                       </tbody>

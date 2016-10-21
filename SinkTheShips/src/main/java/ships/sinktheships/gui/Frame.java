@@ -28,18 +28,24 @@ public class Frame {
      */
     public Frame(int xsize, int ysize) {
         this.frame = new JFrame();
-
         frame.setSize(xsize, ysize);
-        frame.setResizable(false);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //frame.addKeyListener (this); HUOM TÄRKEE muuten controllit ei toimi
         centerFrame();
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }
 
     private void centerFrame() {
         Dimension xy = Toolkit.getDefaultToolkit().getScreenSize();
         this.frame.setLocation(xy.width / 2 - this.frame.getWidth() / 2, xy.height / 2 - this.frame.getHeight() / 2);
+    }
+
+    /**
+     * Viimeisenä kutsuttava metodi, joka asettaa JFramen näkyväksi.
+     */
+    public void ready() {
+        //frame.pack();
+        frame.setVisible(true);
     }
 
     /**
@@ -49,22 +55,26 @@ public class Frame {
      */
     public void addInputToFrame(KeyListener listener) {
         this.frame.addKeyListener(listener);  //tarkist tämä, pitäskö import imput..
+        frame.setVisible(true);
     }
 
     /**
-     * Lisää JFrameen DrawOnScreen-luokan olion joka vastaa piirtämisestä ja
-     * extends JPanel.
+     * Lisää JFrameen Outputs-luokan olion joka vastaa piirtämisestä ja extends
+     * JPanel.
      *
      * @param textPanel piirtoluokan olio
+     * @return true kun suoritettu, tämä ei kuitenkään ehkä pidä paikkansa mutta
+     * metodi saa pysyä tälläisenä
      */
-    public void addOutputToFrame(DrawOnScreen textPanel) {
+    public boolean addOutputToFrame(Outputs textPanel) {
         this.frame.add(textPanel);
+        return true;
     }
 
     /**
      * Lopettaa koko ohjelman ajon.
      */
-    public void quit() {
+    public static void quit() {
         System.exit(0);
     }
 }

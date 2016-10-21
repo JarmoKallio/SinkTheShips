@@ -13,3 +13,8 @@ Päivä | Tunnit | Kuvaus
 11.10.2016 | 6h | logiikan kans säätämistä
 12.10.2016 | 9h | käyttöliittymän värkkäystä, pari uutta luokkaa
 14.10.2016 | 5h | ohjelmointia
+17.10.2016 | 6h | ohjelmointia, enimmäkseen suunnittelua, aloin tekee uudestaan ohjelman logiikkaa, noh, ehkä tuli parempi, ehkä vähän sadistista
+18.10.2016 | 6h | ohjelmointia, pari uutta luokkaa, testejä, vanhojen luokkien testien tarkistus
+19.10.2016 | 5h | ohjelmointia
+20.10.2016 | 9h | ohjelmointia, testejä
+21.10.2016 | 10h | Radar luokan värkkäys, testejä, vikat tarkistukset, javadoccia

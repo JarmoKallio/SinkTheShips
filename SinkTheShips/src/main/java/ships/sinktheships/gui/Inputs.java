@@ -7,8 +7,8 @@ package ships.sinktheships.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import ships.sinktheships.gameobjects.Coordinate;
-import ships.sinktheships.gameobjects.Player;
+import ships.sinktheships.logic.Logic;
+import ships.sinktheships.logic.Screen;
 
 /**
  * Luokkaa käytetään näppäimistön kuunteluun, siinä toteutetaan käyttäjän
@@ -19,82 +19,81 @@ import ships.sinktheships.gameobjects.Player;
  */
 public class Inputs implements KeyListener {
 
-    private char recentlyTypedKey = '_';
-    private boolean pressedEnter = false;
-    private boolean pressedBackSpace = false;
-    private boolean pressedQ = false;
-    private boolean pressedO = false;
-    private boolean pressedR = false;
-    private boolean pressedDown = false;
-    private boolean pressedUp = false;
-    private boolean pressedLeft = false;
-    private boolean pressedRight = false;
-    private boolean somethingTypedAndNotUsed = false;
-    private boolean recordXcoordinate = true;
-
-    private boolean somethingHasBeenTyped = false;
+    private Logic logiikka;
+    private Screen activeLoop;
 
     /**
-     * Palauttaa juuri painetun näppäimen char-arvon.
+     * Luo uuden imputs olion joka siis kuuntelee näppäimistöä.
      *
-     * @return näppäity arvo
+     * @param logiikka käytetty logiikaluokan ilmentymä, jonka avulla tehdään
+     * päivityksiä kulloiseenkin screeniin
      */
-    public char getPressedKey() {
-        somethingTypedAndNotUsed = false;
-        char returnValue = recentlyTypedKey;
-        zeroKeyValues();
-        return returnValue;
-    }
+    public Inputs(Logic logiikka) {
+        //tähän timer looppi joka käy muuttamassa logiikan tilaa kun jotain kirjoitetaan jne.
+        //logiikka (Logic) ei tiedä eri kontrolleista, tässä eli Inputs-luokassa
+        //päätetään mitä logiikka-luokan toimintoa milläkin näppäilyllä käytetään..
+        this.logiikka = logiikka;
+        activeLoop = logiikka.getActiveScreen();
 
-    public boolean somethingHasBeenTyped() { //käytetään loopeissa odottamisen apuna
-        somethingHasBeenTyped = false;
-        return true;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        somethingHasBeenTyped = true;
+
+        activeLoop = logiikka.getActiveScreen();
+
         int keyCode = e.getKeyCode();
+        char keyChar = e.getKeyChar();
+
+        numbersOrLettersPressed(keyChar);
+
         if (keyCode == KeyEvent.VK_ENTER) {
-            zeroKeyValues();
-            pressedEnter = true;
+            activeLoop.enterPressed();
         }
         if (keyCode == KeyEvent.VK_BACK_SPACE) {
-            zeroKeyValues();
-            pressedBackSpace = true;
+            activeLoop.backSpacePressed();
         }
         if (keyCode == KeyEvent.VK_Q) {
-            zeroKeyValues();
-            pressedQ = true;
+            if (activeLoop.qPressedToQuit()) {
+                Frame.quit();
+            }
+            activeLoop.qPressed();
         }
-
         if (keyCode == KeyEvent.VK_O) {
-            zeroKeyValues();
-            pressedO = true;
+            activeLoop.oPressed();
         }
         if (keyCode == KeyEvent.VK_R) {
-            zeroKeyValues();
-            pressedR = true;
+            activeLoop.rPressed();
         }
-
         if (keyCode == KeyEvent.VK_DOWN) {
-            zeroKeyValues();
-            pressedDown = true;
+            activeLoop.downPressed();
         }
 
         if (keyCode == KeyEvent.VK_UP) {
-            zeroKeyValues();
-            pressedUp = true;
+            activeLoop.upPressed();
         }
 
         if (keyCode == KeyEvent.VK_LEFT) {
-            zeroKeyValues();
-            pressedLeft = true;
+            activeLoop.leftPressed();
         }
 
         if (keyCode == KeyEvent.VK_RIGHT) {
-            zeroKeyValues();
-            pressedRight = true;
+            activeLoop.rightPressed();
+        }
+
+        logiikka.updateActiveScreen();
+    }
+
+    private void numbersOrLettersPressed(char key) {
+        char newTypedKey = key;
+        //tarkastetaan et vaan numeroita tai kirjaimia
+        String accepted = " 1234567890qwertyuiopåasdfghjklöäzxcvbnmQWERTYUIOPÅASDFGHJKLÖÄZXCVBNMüÜ";
+        if (accepted.contains(newTypedKey + "")) {
+            activeLoop.keyTyped(newTypedKey + "");
+        }
+        String numberInput = "1234567890";
+        if (numberInput.contains(newTypedKey + "")) {
+            activeLoop.numberTyped(newTypedKey + "");
         }
     }
 
@@ -106,208 +105,6 @@ public class Inputs implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
-        char newTypedKey = e.getKeyChar();
-        //tarkastetaan et vaan numeroita tai kirjaimia
-        String accepted = " 1234567890qwertyuiopåasdfghjklöäzxcvbnmQWERTYUIOPÅASDFGHJKLÖÄZXCVBNMüÜ";
-        somethingHasBeenTyped = true;
-        if (accepted.contains(newTypedKey + "")) {
-            this.recentlyTypedKey = newTypedKey;
-            somethingTypedAndNotUsed = true;
-
-        }
-    }
-
-    /**
-     * Saadaan tieto, odottaako jokin hyväksyttävä näppäinmenpainallus käyttöä.
-     *
-     * @return boolean arvo
-     */
-    public boolean isSomethingTypedAndNotUsed() {
-        return somethingTypedAndNotUsed;
-    }
-
-    public boolean isPressedBackSpace() {
-        if (pressedBackSpace) {
-            zeroKeyValues();
-            return !pressedBackSpace;
-        }
-        return false;
-    }
-
-    public boolean isPressedDown() {
-        if (pressedDown) {
-            zeroKeyValues();
-            return !pressedDown;
-        }
-        return false;
-    }
-
-    public boolean isPressedEnter() {
-        if (pressedEnter) {
-            zeroKeyValues();
-            return !pressedEnter;
-        }
-        return false;
-    }
-
-    public boolean isPressedLeft() {
-        if (pressedLeft) {
-            zeroKeyValues();
-            return !pressedLeft;
-        }
-        return false;
-    }
-
-    public boolean isPressedO() {
-        if (pressedO) {
-            zeroKeyValues();
-            return !pressedO;
-        }
-        return false;
-    }
-
-    public boolean isPressedQ() {
-        if (pressedQ) {
-            zeroKeyValues();
-            return !pressedQ;
-        }
-        return false;
-    }
-
-    public boolean isPressedR() {
-        if (pressedR) {
-            zeroKeyValues();
-            return !pressedR;
-        }
-        return false;
-    }
-
-    public boolean isPressedRight() {
-        if (pressedRight) {
-            zeroKeyValues();
-            return !pressedRight;
-        }
-        return false;
-    }
-
-    public boolean isPressedUp() {
-        if (pressedUp) {
-            zeroKeyValues();
-            return !pressedUp;
-        }
-        return false;
-    }
-
-    private void zeroKeyValues() {
-        pressedEnter = false;
-        pressedBackSpace = false;
-        pressedQ = false;
-        pressedO = false;
-        pressedR = false;
-        pressedDown = false;
-        pressedUp = false;
-        pressedLeft = false;
-        pressedRight = false;
-        recentlyTypedKey = '_';
-        somethingTypedAndNotUsed = false;
-    }
-
-    public String userInputString(DrawOnScreen drawOnScreen, String message) throws InterruptedException {
-        String string = "_";
-        while (true) {
-            drawOnScreen.newLineOfText(message, 1);
-            drawOnScreen.addLineOfText(string, 3);
-            if (this.isPressedEnter()) {
-                break;
-            } else if (this.isPressedBackSpace()) {
-                string = shortenString(string);
-                continue;
-            } else if (this.isSomethingTypedAndNotUsed()) {
-                char potentialValue = this.getPressedKey();
-                if (potentialValue != '_') {
-                    if (string.length() < 15) {
-                        string += potentialValue;
-                    }
-                }
-            }
-            Thread.sleep(70);
-        }
-        return string;
-    }
-
-    public Coordinate userInputCoordinate(DrawOnScreen drawOnScreen, Player currentPlayer, Player adversary) throws InterruptedException {
-        Coordinate coord = new Coordinate(0, 0);
-        int number = 0;
-        String stringX = "" + 0;
-        String stringY = "" + 0;
-        String current = "";
-        while (true) {
-
-            drawOnScreen.drawBattle(currentPlayer, adversary);
-            if (recordXcoordinate) {
-                drawOnScreen.addLineOfText("X: < " + stringX + " >  Y:  " + stringY + "  ", 4);
-            } else {
-                drawOnScreen.addLineOfText("X:   " + stringX + "    Y: <" + stringY + " >", 4);
-            }
-
-            if (this.isPressedEnter()) {
-
-                coord = new Coordinate(Integer.parseInt(shortenLongString(stringX)), Integer.parseInt(shortenLongString(stringY)));
-                break;
-
-            } else if (this.isPressedLeft()) {
-                recordXcoordinate = true;
-            } else if (this.isPressedRight()) {
-                recordXcoordinate = false;
-            }
-            if (this.isPressedBackSpace()) {
-                if (recordXcoordinate) {
-                    stringX = shortenString(stringX);
-                } else {
-                    stringY = shortenString(stringY);
-                }
-            } else if (this.isSomethingTypedAndNotUsed()) {
-                int potentialValue = this.getPressedKeyIfNumber();
-                if (recordXcoordinate) {
-                    stringX = stringX + potentialValue;
-                } else {
-                    stringY = stringY + potentialValue;
-                }
-            }
-
-            Thread.sleep(70);
-
-        }
-        return coord;
-    }
-
-    private String shortenLongString(String string) {
-        if (string.length() >= 4) {
-            string = string.substring(0, 3);
-        }
-        return string;
-    }
-
-    private String shortenString(String string) {
-        if (string.length() == 1) {
-            return "";
-        } else if (string.length() > 1) {
-            return string.substring(0, string.length() - 1);
-        }
-        return "";  //jos pituus esim nolla
-    }
-
-    private int getPressedKeyIfNumber() {
-        somethingTypedAndNotUsed = false;
-        char returnValue = getPressedKey();
-        String accepted = "1234567890";
-
-        if (accepted.contains(returnValue + "")) {
-            zeroKeyValues();
-            return Integer.parseInt(returnValue + "");
-        }
-
-        return 0;
     }
 
 }

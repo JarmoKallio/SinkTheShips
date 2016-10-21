@@ -73,36 +73,65 @@ public class ShipTest {
 
     }
 
-//    @Test
-//    public void fillTableWorksWhenAllSame() {
-//        int[] table = new int[5];
-//        table = ship.fillTable(5, 0, false, false);
-//
-//        assertEquals(0, table[4]);
-//
-//    }
-//
-//    @Test
-//    public void fillTableWorksWhenCumulative() {
-//        int[] table = new int[5];
-//        table = ship.fillTable(5, 0, true, false);
-//
-//        assertEquals(4, table[4]);
-//
-//    }
-//
-//    @Test
-//    public void fillTableWorksWhenCumulativeAndSubractive() {
-//        int[] table = new int[5];
-//        table = ship.fillTable(5, 0, true, true);
-//
-//        assertEquals(-4, table[4]);
-//
-//    }
+    @Test
+    public void changeShipAngleWorksWhenZeroTo90() {
+        Ship q1 = new Ship(1, 0, 0, 0);
+        q1.changeShipAngle();
+        assertEquals(90, q1.getShipAngle());
+    }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void changeShipAngleWorksWhenBackToZero() {
+        Ship q1 = new Ship(1, 0, 0, 270);
+        q1.changeShipAngle();
+        assertEquals(0, q1.getShipAngle());
+    }
+
+    @Test
+    public void canFireXTimesWorksOneTimeLeft() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        q1.setDamages(2);
+        assertEquals(1, q1.canFireXTimes());
+    }
+
+    @Test
+    public void canFireXTimesWorksNoTimesLeft() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        q1.setDamages(3);
+        assertEquals(0, q1.canFireXTimes());
+    }
+
+    @Test
+    public void canFireXTimesNoDamages() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        assertEquals(3, q1.canFireXTimes());
+    }
+
+    @Test
+    public void isDestroyedWorksWhenDestroyed() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        q1.setDamages(3);
+        assertEquals(true, q1.isDestroyed());
+    }
+
+    @Test
+    public void isDestroyedWorksWhenNoDamages() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        assertEquals(false, q1.isDestroyed());
+    }
+
+    @Test
+    public void setDamagesWorksWhenOneDamage() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        q1.setDamages(1);
+        assertEquals(2, q1.canFireXTimes());
+    }
+
+    @Test
+    public void setDamagesWorksWhenDestroyed() {
+        Ship q1 = new Ship(2, 0, 0, 270);
+        q1.setDamages(3);
+        assertEquals(0, q1.canFireXTimes());
+    }
+
 }

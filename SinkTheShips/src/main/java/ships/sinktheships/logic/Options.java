@@ -14,7 +14,7 @@ package ships.sinktheships.logic;
 public class Options {
 
     private static int maxFleetSize = 5;
-    private static int xMin = 1; // laivaruudukon min arvo..
+    private static int xMin = 1; // laivaruudukon min arvo
     private static int xMax = 10;
     private static int yMin = 1;
     private static int yMax = 10;
@@ -22,14 +22,29 @@ public class Options {
     private static int windowSizeX = 720;
     private static int windowSizeY = 720;
 
+    /**
+     * Kertoo mikä on suurin sallittu laivaston koko.
+     *
+     * @return integer
+     */
     public static int getMaxFleetSize() {
         return maxFleetSize;
     }
 
+    /**
+     * Palauttaa käytettävän peli-ikkunan leveyden.
+     *
+     * @return integer
+     */
     public static int getWindowSizeX() {
         return windowSizeX;
     }
 
+    /**
+     * Palauttaa käytettävän peli-ikkunan korkeusden.
+     *
+     * @return integer
+     */
     public static int getWindowSizeY() {
         return windowSizeY;
     }

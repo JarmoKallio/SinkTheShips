@@ -9,19 +9,21 @@ import ships.sinktheships.logic.Options;
 import java.util.ArrayList;
 
 /**
- * Pelaajat voivat tallentaa nimensä, muuten luokka huolehtii pelaajalle
- * kuuluvista laivoista, jne.
+ * Luokkaan tallennetaan palaajan nimi, laivat, tutka, osumat ynnä muuta.
+ *
  *
  * @author jambo
  */
 public class Player {
 
     private ArrayList<Ship> fleet;   //tänne säilötään pelaajan laivat
+    private ArrayList<Coordinate> coordinatesOfShots;
     private ArrayList<Shot> shotsOnThisOnesGrid;
     private String name;          //täsä tarkkaa et inputit tulee oikein...että otetaan
     private int turnsPlayed;      //vastaan vain kirjaimia
     private int id;
     private int shipsInFleet;
+    private Radar radar = new Radar(); //tehdään Radar, joka ei tee mitään
 
     /**
      * Luo pelaaja-olion.
@@ -33,6 +35,7 @@ public class Player {
         this.name = name;
         this.fleet = new ArrayList<Ship>();
         this.shotsOnThisOnesGrid = new ArrayList<Shot>();
+        this.coordinatesOfShots = new ArrayList<Coordinate>();
         this.id = id;
         this.turnsPlayed = 0;
         this.shipsInFleet = 0;
@@ -52,12 +55,36 @@ public class Player {
 
     }
 
+    /**
+     * Lisää tutka-olion pelaajalle.
+     *
+     * @param ship tutkan parametri
+     */
+    public void addRadar(Ship ship) {
+        this.radar = new Radar(ship);
+    }
+
+    /**
+     * Palauttaa pelaajalla kulloinkin olevan tutkan.
+     *
+     * @return tutka eli Radar-luokan ilmentymä
+     */
+    public Radar getRadar() {
+        return this.radar;
+    }
+
+    /**
+     * Palauttaa pelaajan koordinaatistoon tehdyt ammunnat, Shot.
+     *
+     * @return palauttaa kaikki Shot-oliot pelaajan niitä säilövästä
+     * ArrayLististä
+     */
     public ArrayList<Shot> getShotsOnThisOnesGrid() {
         return shotsOnThisOnesGrid;
     }
 
     /**
-     * Paluuarvona pelaajan laivat sisältävä lista.
+     * Palauttaa pelaajan laivat sisältävän listan.
      *
      * @return palauttaa pelaajan laivat ArrayListissä
      */
@@ -65,6 +92,11 @@ public class Player {
         return fleet;
     }
 
+    /**
+     * Palauttaa pelaajan nimen.
+     *
+     * @return pelaajan nimi
+     */
     public String getName() {
         return name;
     }
@@ -84,7 +116,7 @@ public class Player {
     }
 
     /**
-     * Pelaajan idn palautus.
+     * Palauttaa pelaajan id:n.
      *
      * @return pelaajan id
      */
@@ -104,6 +136,11 @@ public class Player {
         return number;
     }
 
+    /**
+     * Kertoo onko pelaajan kaikki laivat tuhottu.
+     *
+     * @return boolean onko laivat tuhottu
+     */
     public boolean allShipsDestroyed() {
         if (numOfShipsDestroyed() >= this.shipsInFleet) {
             return true;
@@ -111,29 +148,65 @@ public class Player {
         return false;
     }
 
-    public boolean addShot(Coordinate coordinate) {
-
-        if (this.hasShipInThisCoordinate(coordinate)) {
-            if (this.shotsOnThisOnesGrid.contains(new Shot(coordinate, true))) {
-                return false;
-            }
-            this.shotsOnThisOnesGrid.add(new Shot(coordinate, true));
-
-        } else {
-            if (this.shotsOnThisOnesGrid.contains(new Shot(coordinate, false))) {
-                return false;
-            }
-            this.shotsOnThisOnesGrid.add(new Shot(coordinate, false));
+    /**
+     * Kertoo onko pelaajan listalla, joka säilöö ammunnankohde-koordinaatteja,
+     * kyseistä koordinaattia.
+     *
+     * @param coordinate selvitettävä koordinaatti
+     * @return boolean joka riippuu siitä löytyikö pelaajan listasta annettua
+     * koordinaattia
+     */
+    public boolean coordinateUsed(Coordinate coordinate) {
+        if (this.shotsOnThisOnesGrid.isEmpty()) {
+            return false;
         }
-
-        return true;
+        for (Shot shot : this.shotsOnThisOnesGrid) {
+            Coordinate x = shot.getCoordinate();
+            if (x.getxCoordinate() == coordinate.getxCoordinate() && x.getyCoordinate() == coordinate.getyCoordinate()) {
+                return true;
+            }
+        }
+        return false;
     }
 
+    /**
+     * Kertoo onko annetussa koordinaatissa pelaajan laivaa.
+     *
+     * @param coordinate annettu koordinaatti
+     * @return boolean joka riippuu siitä löytyikö laivaa koordinaatista
+     */
+    public boolean isHereAship(Coordinate coordinate) {
+        if (hasShipInThisCoordinate(coordinate)) {
+            this.coordinatesOfShots.add(coordinate);
+            return true;
+        }
+        this.coordinatesOfShots.add(coordinate);
+        return false;
+
+    }
+
+    /**
+     * Palauttaa listan koordinaatteja, joka pitää kirjaa ammunnoista pelaajan
+     * koordinaatistoon.
+     *
+     * @return lista koordinaatteja
+     */
+    public ArrayList<Coordinate> getCoordinatesOfShots() {
+        return coordinatesOfShots;
+    }
+
+    /**
+     * Kertoo onko pelaajalla laivaa annetussa koordinaatissa.
+     *
+     * @param coordinate annettu koordinaatti
+     * @return boolean, riippuu siitä löytyikö laivaa
+     */
     public boolean hasShipInThisCoordinate(Coordinate coordinate) {
         for (Ship x : this.fleet) {
             if (x.isThisShipHere(coordinate)) {
                 int dam = x.getDamages();
                 x.setDamages(dam + 1);
+
                 return true;
             }
         }

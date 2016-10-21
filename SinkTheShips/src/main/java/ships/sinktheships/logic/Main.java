@@ -15,8 +15,9 @@ public class Main {
     /**
      * Koko ohjelman käynnistävä metodi.
      *
+     * @param args ...
      */
     public static void main(String[] args) {
-        GameLoops ajo = new GameLoops();
+        Initialize ajo = new Initialize();
     }
 }

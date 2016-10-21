@@ -71,9 +71,89 @@ public class PlayerTest {
         assertEquals("Destroyer", x.getName());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void hasPlacedShipsWorks() {
+        player = new Player("qqq", 1);
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+
+        assertEquals(true, player.hasPlacedShips());
+    }
+
+    @Test
+    public void hasPlacedShipsWorks2() {
+        player = new Player("qqq", 1);
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+        player.addToFleet(new Ship(2, 0, 0, 0));
+
+        assertEquals(false, player.hasPlacedShips());
+    }
+
+    @Test
+    public void hasShipInThisCoordinateWorks() {
+        player = new Player("qqq", 1);
+        player.addToFleet(new Ship(2, 0, 0, 0));
+
+        assertEquals(true, player.hasShipInThisCoordinate(new Coordinate(0, 0)));
+    }
+
+    @Test
+    public void hasShipInThisCoordinateWorksNoShip() {
+        player = new Player("qqq", 1);
+        player.addToFleet(new Ship(2, 0, 0, 0));
+
+        assertEquals(false, player.hasShipInThisCoordinate(new Coordinate(3, 3)));
+    }
+
+    @Test
+    public void coordinateUsedWorks() {
+        player = new Player("qqq", 1);
+        Ship qq = new Ship(2, 0, 0, 0);
+        player.addToFleet(qq);
+        player.getShotsOnThisOnesGrid().add(new Shot(new Coordinate(1, 1), true));
+        //player.getCoordinatesOfShots().add(new Coordinate(1, 1));
+        //player.isHereAship(new Coordinate(1, 1));
+        assertEquals(true, player.coordinateUsed(new Coordinate(1, 1)));
+    }
+
+    @Test
+    public void coordinateUsedWorksNoCoordinate() {
+        player = new Player("qqq", 1);
+        Ship qq = new Ship(2, 0, 0, 0);
+        player.addToFleet(qq);
+        assertEquals(false, player.coordinateUsed(new Coordinate(1, 1)));
+    }
+
+    @Test
+    public void allShipsDestroyedWorks() {
+        player = new Player("qqq", 1);
+        Ship q1 = new Ship(1, 0, 0, 0);
+        player.addToFleet(q1);
+        q1.setDamages(2);
+        assertEquals(true, player.allShipsDestroyed());
+    }
+
+    @Test
+    public void allShipsDestroyedWorksNotAllDestroyed() {
+        player = new Player("qqq", 1);
+        Ship q1 = new Ship(1, 0, 0, 0);
+        player.addToFleet(q1);
+        Ship q2 = new Ship(1, 0, 0, 0);
+        player.addToFleet(q1);
+        assertEquals(false, player.allShipsDestroyed());
+    }
+
+    @Test
+    public void allShipsDestroyedWorksNoShipDestroyed() {
+        player = new Player("qqq", 1);
+        Ship q1 = new Ship(1, 0, 0, 0);
+        player.addToFleet(q1);
+        assertEquals(false, player.allShipsDestroyed());
+    }
+
 }

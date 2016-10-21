@@ -6,7 +6,7 @@
 package ships.sinktheships.gui;
 
 /**
- * Pieni luokka jonka olioilla on pala tekstiä ja rivinumero.
+ * Luokan olioilla on pala tekstiä ja rivinumero.
  *
  * @author jambo
  */
@@ -16,7 +16,7 @@ public class Text {
     private int lineNumber;
 
     /**
-     * Konstruktori.
+     * Luo uuden teksti-olion.
      *
      * @param text lisättävä teksti
      * @param lineNumber haluttu rivinumero
@@ -42,5 +42,23 @@ public class Text {
      */
     public String getText() {
         return text;
+    }
+
+    /**
+     * Muutta nykyisen tekstisisällön.
+     *
+     * @param text uusi tekstisisältö
+     */
+    public void updateText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * Muuttaa rivinumeron.
+     *
+     * @param number rivinumero
+     */
+    public void updateLineNumber(int number) {
+        this.lineNumber = number;
     }
 }

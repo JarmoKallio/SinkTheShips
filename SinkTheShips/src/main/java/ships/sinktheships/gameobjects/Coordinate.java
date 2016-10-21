@@ -6,6 +6,7 @@
 package ships.sinktheships.gameobjects;
 
 /**
+ * Luokan alkioilla kaksi muuttujaa, x- ja y- koordinaatit.
  *
  * @author jambo
  */
@@ -14,23 +15,49 @@ public class Coordinate {
     private int xCoordinate;
     private int yCoordinate;
 
+    /**
+     * Oliolle asetetaan x- ja y- koordinaatit.
+     *
+     * @param xCoordinate koordinaatti
+     * @param yCoordinate koordinaatti
+     */
     public Coordinate(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
     }
 
+    /**
+     * Setteri.
+     *
+     * @param xCoordinate koordinaatti
+     */
     public void setxCoordinate(int xCoordinate) {
         this.xCoordinate = xCoordinate;
     }
 
+    /**
+     * Setteri.
+     *
+     * @param yCoordinate koordinaatti
+     */
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
 
+    /**
+     * Getteri.
+     *
+     * @return x-koordinaatti
+     */
     public int getxCoordinate() {
         return xCoordinate;
     }
 
+    /**
+     * Getteri.
+     *
+     * @return y-koordinaatti
+     */
     public int getyCoordinate() {
         return yCoordinate;
     }
@@ -38,19 +65,6 @@ public class Coordinate {
     @Override
     public String toString() {
         return "x: " + this.xCoordinate + "  y: " + this.yCoordinate;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj.hashCode() == this.hashCode()) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Integer.parseInt(xCoordinate + "" + yCoordinate);
     }
 
 }
